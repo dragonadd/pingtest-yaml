@@ -36,7 +36,7 @@ pip install -r requirements.txt
 ### 1. 运行脚本
 
 ```bash
-python proxy_tester.py
+python proxytest.py
 ```
 
 ### 2. 输入GitHub Gist链接
