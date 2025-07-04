@@ -86,16 +86,32 @@ MAX_WORKERS = 20  # 并发测试的最大线程数
 
 ```yaml
 proxies:
-  - name: "节点1"
-    server: "example.com"
-    port: 443
-    type: "ss"
-    cipher: "aes-256-gcm"
-    password: "password123"
-  - name: "节点2"
-    server: "example2.com"
-    port: 80
-    type: "http"
+  -
+    name: '🇹🇼 [IPLC-移动优化-家宽-台湾1] ✨ 2x'
+    type: vmess
+    server: 69-in-1.226969.xyz
+    port: 30002
+    uuid: aa20dc42-e6e5-3c65-88fb-3e41989ca89f
+    alterId: 0
+    cipher: auto
+    udp: true
+  -
+    name: '🇭🇰 [IPLC-移动优化-香港1] ✨ 2x'
+    type: ss
+    server: 69-in-1.226969.xyz
+    port: 10010
+    cipher: aes-256-gcm
+    password: q50KdJEMfQWAwOTo
+    udp: true
+
+```
+另一种：
+```yaml
+proxies:
+  - {name: "[Trojan] 🇭🇰 香港", server: bgp-xdd.blue-bgp.xyz, port: 44011, client-fingerprint: chrome, type: trojan, password: 40ffbaaf-ac3f-4fdc-a440-ca3933e751b0, sni: aliyun.com, skip-cert-verify: true, udp: true}
+  - {name: "[Trojan] 🇭🇰 香港 2", server: bgp-xdd.blue-bgp.xyz, port: 44012, client-fingerprint: chrome, type: trojan, password: 4d86bc6b-0ed7-41b7-94d4-f80b6a16a8bb, sni: aliyun.com, skip-cert-verify: true, udp: true}
+  - {name: "[Trojan] 🇭🇰 香港 3", server: bgp-xdd.blue-bgp.xyz, port: 44013, client-fingerprint: chrome, type: trojan, password: a050b1e4-c1c4-468c-a3c6-d960fc3fd0fc, sni: aliyun.com, skip-cert-verify: true, udp: true}
+
 ```
 
 ## 输出文件格式
@@ -104,16 +120,20 @@ proxies:
 
 ```
 proxies:
-  - {name: "节点1", server: "example.com", port: 443, type: "ss", cipher: "aes-256-gcm", password: "password123"}
-  - {name: "节点2", server: "example2.com", port: 80, type: "http"}
+    - { name: '🇭🇰 香港 01', type: ss, server: glienhglian.yangliq.com, port: 31001, cipher: aes-128-gcm, password: 33f1891d-5632-4d68-9f9a-f0f000242fde, udp: true }
+    - { name: '🇭🇰 香港 02', type: ss, server: glienhglian.yangliq.com, port: 31002, cipher: aes-128-gcm, password: 33f1891d-5632-4d68-9f9a-f0f000242fde, udp: true }
+
 ```
 
 ## 注意事项
 
-1. **仅支持GitHub Gist链接**：出于安全考虑，脚本只接受GitHub Gist的URL
-2. **需要网络连接**：脚本需要能够访问GitHub和测试的代理服务器
-3. **防火墙设置**：确保防火墙允许脚本进行网络连接测试
-4. **大量节点测试**：当节点数量较多时，测试可能需要较长时间
+1. 仅支持GitHub Gist的原始内容URL，普通Gist页面URL会被拒绝
+2. 测试节点延迟时，每个节点默认超时时间为5秒（可在代码中修改TIMEOUT常量）
+3. 脚本使用并发测试，默认最多同时测试20个节点（可在代码中修改MAX_WORKERS常量）
+4. 对于大量节点（如超过100个），测试过程可能需要较长时间（脚本会显示进度信息）
+5. 确保网络连接正常，否则测试结果可能不准确
+6. 脚本会自动去除重复节点，去重依据是节点的关键字段（排除name、remarks等非关键字段）
+7. 如果订阅内容不是有效的YAML格式，脚本会报错并显示部分内容以帮助排查问题
 
 ## 故障排除
 
@@ -141,7 +161,7 @@ A: 可以适当增加`MAX_WORKERS`值以提高并发数，但注意不要设置�
 
 ## 许可证
 
-请根据实际情况添加适当的许可证信息。
+本项目采用MIT许可证。
 
 ## 贡献
 
@@ -149,4 +169,8 @@ A: 可以适当增加`MAX_WORKERS`值以提高并发数，但注意不要设置�
 
 ## 免责声明
 
-本工具仅用于测试网络连接性，请遵守相关法律法规和服务条款。
+本项目仅供学习和技术交流使用，不保证任何可用性或稳定性。使用本工具所产生的任何法律责任及后果与作者无关。用户应自行承担使用本工具可能带来的所有风险。
+
+请遵守当地法律法规，禁止用于任何非法用途。
+
+使用本工具即表示您已理解并接受以上声明。
