@@ -30,7 +30,7 @@ pip install requests PyYAML
 1. 运行脚本
 
    ```bash
-   python proxytest.py
+   python pingtest.py
    ```
 
 2. 输入GitHub Gist链接
